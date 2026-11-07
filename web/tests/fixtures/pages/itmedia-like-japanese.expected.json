@@ -1,0 +1,75 @@
+{
+  "lang": "ja",
+  "dir": "ltr",
+  "title": [
+    [
+      "国産ロボット掃除機、新モデルで障害物検知を大幅強化",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [
+    [
+      "メーカーは11月発売の新モデルで、カメラとLiDARを組み合わせた検知方式を採用したと発表した。",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [],
+  "siteName": [
+    [
+      "ITnews",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "itnews.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 08:30 off=540",
+      "article",
+      0.88
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://image.itnews.test/l/im/2611/06/robot.jpg",
+      "og",
+      0.9
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.itnews.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.itnews.test/articles/2611/06/news042.html",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

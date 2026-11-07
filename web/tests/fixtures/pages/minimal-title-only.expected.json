@@ -1,0 +1,51 @@
+{
+  "lang": null,
+  "dir": null,
+  "title": [
+    [
+      "My weekend notes",
+      "html",
+      0.5,
+      "title"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "blog.example.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://blog.example.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://blog.example.test/post/1",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": "no-metadata",
+    "quality": 0,
+    "structuredTitle": false
+  }
+}

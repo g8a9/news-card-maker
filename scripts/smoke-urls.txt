@@ -1,0 +1,3 @@
+# Extra URLs for `npm run smoke`, one per line. Stable pages only; the newest item of every outlet's feed
+# is added automatically (scripts/smoke-corpus.json and the registry), so it never goes stale.
+https://news.ycombinator.com/item?id=8863

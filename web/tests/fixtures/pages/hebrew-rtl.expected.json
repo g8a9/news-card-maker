@@ -1,0 +1,62 @@
+{
+  "lang": "he",
+  "dir": "rtl",
+  "title": [
+    [
+      "הממשלה אישרה את התקציב החדש",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "חדשות",
+      "og",
+      0.85
+    ],
+    [
+      "news.example.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06",
+      "url",
+      0.5
+    ]
+  ],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://news.example.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://news.example.test/il/2026/11/06/item",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.65,
+    "structuredTitle": true
+  }
+}

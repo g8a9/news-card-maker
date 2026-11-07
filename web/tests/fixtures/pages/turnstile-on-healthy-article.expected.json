@@ -1,0 +1,76 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "A small newsroom grows",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [
+    [
+      "Four reporters became twelve in a year, funded entirely by readers.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [],
+  "siteName": [
+    [
+      "Indie Press",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "indiepress.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 09:00 off=0",
+      "article",
+      0.93,
+      "article, url"
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://cdn.indiepress.test/newsroom.jpg",
+      "og",
+      0.9
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.indiepress.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.indiepress.test/2026/11/06/a-small-newsroom-grows/",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

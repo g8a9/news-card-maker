@@ -1,0 +1,64 @@
+{
+  "lang": "it",
+  "dir": "ltr",
+  "title": [
+    [
+      "Alluvione, i soccorsi lavorano nella notte",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "la Repubblica",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "larepubblica.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 22:30 off=60",
+      "jsonld",
+      0.95,
+      "jsonld, url"
+    ]
+  ],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://www.larepubblica.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.larepubblica.test/cronaca/2026/11/06/alluvione-soccorsi/",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.65,
+    "structuredTitle": true
+  }
+}

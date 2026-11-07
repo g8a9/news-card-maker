@@ -1,0 +1,85 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Bridge reopens after eight months of repairs",
+      "html",
+      0.91,
+      "html, microdata"
+    ],
+    [
+      "Bridge reopens",
+      "html",
+      0.5,
+      "title"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "Local Paper",
+      "html",
+      0.45,
+      "title-tail"
+    ],
+    [
+      "localpaper.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [
+    [
+      [
+        "Dana Whitfield"
+      ],
+      "microdata",
+      0.7
+    ]
+  ],
+  "published": [
+    [
+      "2026-11-05 08:00 off=-300",
+      "meta",
+      0.75,
+      "datepublished"
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://www.localpaper.test/media/bridge.jpg [1200x800]",
+      "html",
+      0.4,
+      "article-img"
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.localpaper.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.localpaper.test/news/bridge-reopens",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.45,
+    "structuredTitle": false
+  }
+}

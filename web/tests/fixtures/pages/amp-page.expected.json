@@ -1,0 +1,62 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Harbour tram approved",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "The Courier",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "thecourier.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://www.thecourier.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.thecourier.test/story/harbour-tram",
+      "link",
+      0.9
+    ],
+    [
+      "https://www.thecourier.test/amp/story/harbour-tram",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.5,
+    "structuredTitle": true
+  }
+}

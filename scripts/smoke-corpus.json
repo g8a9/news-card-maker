@@ -1,0 +1,45 @@
+[
+  { "name": "404 Media", "feed": "https://www.404media.co/rss/" },
+  { "name": "Al Jazeera", "feed": "https://www.aljazeera.com/xml/rss/all.xml" },
+  { "name": "ANSA", "feed": "https://www.ansa.it/sito/ansait_rss.xml" },
+  { "name": "Ars Technica", "feed": "https://feeds.arstechnica.com/arstechnica/index" },
+  { "name": "BBC News", "feed": "https://feeds.bbci.co.uk/news/rss.xml" },
+  { "name": "Bloomberg", "feed": "https://feeds.bloomberg.com/markets/news.rss" },
+  { "name": "Corriere della Sera", "feed": "https://www.corriere.it/rss/homepage.xml" },
+  { "name": "El País", "feed": "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/portada" },
+  { "name": "The Guardian", "feed": "https://www.theguardian.com/world/rss" },
+  { "name": "Hacker News", "hackerNewsFront": true },
+  {
+    "name": "Il Post",
+    "feed": "https://www.ilpost.it/feed/",
+    "homepage": "https://www.ilpost.it/",
+    "homepageLink": "https://www\\.ilpost\\.it/20\\d\\d/\\d\\d/\\d\\d/[a-z0-9-]+/"
+  },
+  { "name": "ITmedia", "feed": "https://rss.itmedia.co.jp/rss/2.0/itmedia_all.xml" },
+  { "name": "Nature", "feed": "https://www.nature.com/nature.rss" },
+  { "name": "la Repubblica", "feed": "https://www.repubblica.it/rss/homepage/rss2.0.xml" },
+  { "name": "Il Sole 24 ORE", "feed": "https://www.ilsole24ore.com/rss/italia.xml" },
+  { "name": "DER SPIEGEL", "feed": "https://www.spiegel.de/schlagzeilen/index.rss" },
+  { "name": "TechCrunch", "feed": "https://techcrunch.com/feed/" },
+  { "name": "The Verge", "feed": "https://www.theverge.com/rss/index.xml" },
+  { "name": "Wired", "feed": "https://www.wired.com/feed/rss" },
+
+  { "name": "The Economist", "feed": "https://www.economist.com/latest/rss.xml", "blocked": true },
+  { "name": "Financial Times", "feed": "https://www.ft.com/rss/home", "blocked": true },
+  {
+    "name": "The New York Times",
+    "feed": "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+    "blocked": true
+  },
+  {
+    "name": "The Wall Street Journal",
+    "feed": "https://feeds.content.dowjones.io/public/rss/RSSWorldNews",
+    "blocked": true
+  },
+  { "name": "Le Monde", "feed": "https://www.lemonde.fr/rss/une.xml", "blocked": true },
+  {
+    "name": "The Washington Post",
+    "feed": "https://feeds.washingtonpost.com/rss/world",
+    "blocked": true
+  }
+]

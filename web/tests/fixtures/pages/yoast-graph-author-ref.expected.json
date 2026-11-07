@@ -1,0 +1,105 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Chipmaker delays new fab by a year",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [
+    [
+      "Hardware",
+      "jsonld",
+      0.8
+    ]
+  ],
+  "siteName": [
+    [
+      "TechWire",
+      "og",
+      0.95,
+      "og, jsonld, html"
+    ],
+    [
+      "techwire.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [
+    [
+      [
+        "Sam Okafor"
+      ],
+      "jsonld",
+      0.9
+    ]
+  ],
+  "published": [
+    [
+      "2026-11-06 14:02 off=0",
+      "jsonld",
+      0.95,
+      "jsonld, url"
+    ]
+  ],
+  "modified": [
+    [
+      "2026-11-06 15:30 off=0",
+      "jsonld",
+      0.9
+    ]
+  ],
+  "images": [
+    [
+      "https://techwire.test/wp-content/uploads/2026/11/fab.jpg?w=1200",
+      "og",
+      0.9
+    ],
+    [
+      "https://techwire.test/wp-content/uploads/2026/11/fab.jpg [1920x1080]",
+      "jsonld",
+      0.85
+    ]
+  ],
+  "logos": [
+    [
+      "wordmark: https://techwire.test/wp-content/uploads/techwire-logo.png",
+      "jsonld",
+      0.7
+    ],
+    [
+      "favicon: https://techwire.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://techwire.test/2026/11/06/chipmaker-delays-new-fab/",
+      "link",
+      0.9
+    ],
+    [
+      "https://techwire.test/2026/11/06/chipmaker-delays-new-fab/",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.85,
+    "structuredTitle": true
+  }
+}

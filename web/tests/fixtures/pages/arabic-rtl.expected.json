@@ -1,0 +1,70 @@
+{
+  "lang": null,
+  "dir": "rtl",
+  "title": [
+    [
+      "ارتفاع أسعار النفط بعد قرار المنتجين",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [
+    [
+      "قفزت الأسعار أكثر من ثلاثة في المئة بعد اجتماع المنتجين الرئيسيين في فيينا.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [],
+  "siteName": [
+    [
+      "الأخبار",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "alakhbar.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 10:00 off=180",
+      "article",
+      0.93,
+      "article, url"
+    ]
+  ],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://www.alakhbar.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.alakhbar.test/news/2026/11/06/economy-1",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.8,
+    "structuredTitle": true
+  }
+}

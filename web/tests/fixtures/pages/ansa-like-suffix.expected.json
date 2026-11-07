@@ -1,0 +1,88 @@
+{
+  "lang": "it",
+  "dir": "ltr",
+  "title": [
+    [
+      "Manovra, via libera dal Senato con la fiducia",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [
+    [
+      "Il testo passa alla Camera, dove dovrà essere approvato entro fine mese.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [
+    [
+      "Ultima ora",
+      "article",
+      0.75
+    ]
+  ],
+  "siteName": [
+    [
+      "Agenzia Nova",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "agenzianova.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 17:45 off=60",
+      "article",
+      0.93,
+      "article, url"
+    ]
+  ],
+  "modified": [
+    [
+      "2026-11-06 19:10 off=60",
+      "article",
+      0.88
+    ]
+  ],
+  "images": [
+    [
+      "https://www.agenzianova.test/images/manovra-1200.jpg",
+      "og",
+      0.9
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.agenzianova.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.agenzianova.test/sito/notizie/politica/2026/11/06/manovra-via-libera/12345.html",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

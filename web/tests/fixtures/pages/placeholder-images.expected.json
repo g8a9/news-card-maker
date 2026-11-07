@@ -1,0 +1,67 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "County fair opens to record crowds",
+      "og",
+      0.93,
+      "og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "countyherald.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [],
+  "modified": [],
+  "images": [
+    [
+      "https://www.countyherald.test/sites/default/files/2026-11/fair.jpg",
+      "twitter",
+      0.85
+    ],
+    [
+      "https://www.countyherald.test/assets/logo-large.png",
+      "link",
+      0.18
+    ],
+    [
+      "https://www.countyherald.test/assets/images/default-share-image.png [300x300]",
+      "og",
+      0.081
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.countyherald.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.countyherald.test/news/fair-opens",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.6,
+    "structuredTitle": true
+  }
+}

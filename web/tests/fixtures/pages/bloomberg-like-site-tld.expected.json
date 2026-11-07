@@ -1,0 +1,69 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Traders Boost Rate Cut Bets",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "Ledger",
+      "og",
+      0.95,
+      "og, jsonld, html"
+    ],
+    [
+      "ledger.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 13:00 off=0",
+      "jsonld",
+      0.95,
+      "jsonld, url"
+    ]
+  ],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "wordmark: https://assets.ledger.test/logo.svg",
+      "jsonld",
+      0.7
+    ],
+    [
+      "favicon: https://www.ledger.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.ledger.test/news/articles/2026-11-06/rate-cut-bets",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.65,
+    "structuredTitle": true
+  }
+}

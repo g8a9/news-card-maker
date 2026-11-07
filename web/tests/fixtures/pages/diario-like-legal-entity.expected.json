@@ -1,0 +1,82 @@
+{
+  "lang": "es",
+  "dir": "ltr",
+  "title": [
+    [
+      "El Gobierno aprueba el nuevo plan de vivienda",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "EL PERIODICO",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "Ediciones EL PERIODICO S.L.",
+      "jsonld",
+      0.48,
+      "publisher"
+    ],
+    [
+      "elperiodico.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 10:00 off=60",
+      "jsonld",
+      0.9
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://img.elperiodico.test/vivienda.jpg",
+      "og",
+      0.9
+    ]
+  ],
+  "logos": [
+    [
+      "icon: https://img.elperiodico.test/newsletter-379x975.png",
+      "jsonld",
+      0.7
+    ],
+    [
+      "favicon: https://elperiodico.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://elperiodico.test/espana/20261106/aprobado-plan-vivienda-1.html",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {
+    "isAccessibleForFree": false
+  },
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.85,
+    "structuredTitle": true
+  }
+}

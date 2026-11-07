@@ -1,0 +1,69 @@
+{
+  "lang": "it",
+  "dir": "ltr",
+  "title": [
+    [
+      "Il vertice europeo si chiude senza accordo sul bilancio",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "Il Giornale Test",
+      "og",
+      0.85
+    ],
+    [
+      "ilgiornale.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 09:15 off=120",
+      "jsonld",
+      1,
+      "jsonld, article, url"
+    ]
+  ],
+  "modified": [
+    [
+      "2026-11-06 09:45 off=120",
+      "jsonld",
+      0.9
+    ]
+  ],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://www.ilgiornale.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.ilgiornale.test/mondo/2026/11/06/vertice-europeo-1234/",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.65,
+    "structuredTitle": true
+  }
+}

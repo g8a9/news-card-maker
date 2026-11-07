@@ -20,3 +20,6 @@ web/src/bookmarklet/generated.ts
 *.local
 .DS_Store
 *.log
+
+# generated reports
+smoke-report.md

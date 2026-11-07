@@ -1,0 +1,142 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Council approves harbour tram line after late vote",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [
+    [
+      "Councillors backed the scheme by 31 votes to 29, ending a decade of argument over the waterfront.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [
+    [
+      "Transport",
+      "jsonld",
+      0.85,
+      "jsonld, article"
+    ]
+  ],
+  "siteName": [
+    [
+      "The Courier",
+      "og",
+      0.95,
+      "og, jsonld, html"
+    ],
+    [
+      "thecourier.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [
+    [
+      [
+        "Jane Roe"
+      ],
+      "jsonld",
+      0.9
+    ]
+  ],
+  "published": [
+    [
+      "2026-11-06 18:30 off=0",
+      "jsonld",
+      1,
+      "jsonld, article, html, url"
+    ]
+  ],
+  "modified": [
+    [
+      "2026-11-06 21:05 off=0",
+      "jsonld",
+      0.9
+    ]
+  ],
+  "images": [
+    [
+      "https://i.thecourier.test/img/media/2026/11/06/tram.jpg?width=1200&height=1200&quality=85&fit=max",
+      "jsonld",
+      0.85
+    ],
+    [
+      "https://i.thecourier.test/img/media/2026/11/06/tram.jpg?width=1200&height=900&quality=85&fit=max",
+      "jsonld",
+      0.85
+    ],
+    [
+      "https://i.thecourier.test/img/media/2026/11/06/tram.jpg?width=1200&height=630&overlay-base64=L2ltZy9vdmVybGF5LnBuZw&s=abc123 [1200x630]",
+      "og",
+      0.59,
+      "og, twitter"
+    ]
+  ],
+  "logos": [
+    [
+      "wordmark: https://assets.thecourier.test/logos/courier-wordmark.png",
+      "jsonld",
+      0.7
+    ],
+    [
+      "icon: https://assets.thecourier.test/icons/apple-touch-icon-180.png",
+      "link",
+      0.55
+    ],
+    [
+      "favicon: https://www.thecourier.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [
+    [
+      "#052962",
+      "meta",
+      0.75,
+      "theme-color"
+    ]
+  ],
+  "canonical": [
+    [
+      "https://www.thecourier.test/transport/2026/nov/06/council-approves-harbour-tram-line",
+      "link",
+      0.9
+    ],
+    [
+      "https://www.thecourier.test/transport/2026/nov/06/council-approves-harbour-tram-line",
+      "og",
+      0.8
+    ],
+    [
+      "https://www.thecourier.test/transport/2026/nov/06/council-approves-harbour-tram-line",
+      "jsonld",
+      0.7
+    ],
+    [
+      "https://www.thecourier.test/transport/2026/nov/06/council-approves-harbour-tram-line",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {
+    "ogType": "article"
+  },
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

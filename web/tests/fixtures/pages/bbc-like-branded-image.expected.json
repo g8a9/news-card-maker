@@ -1,0 +1,108 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Storm brings flooding to the south coast",
+      "jsonld",
+      1,
+      "jsonld, og, html"
+    ]
+  ],
+  "description": [
+    [
+      "Hundreds of homes were evacuated overnight as the river broke its banks.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [],
+  "siteName": [
+    [
+      "Brit News",
+      "og",
+      0.95,
+      "og, jsonld, html"
+    ],
+    [
+      "britnews.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06 07:12 off=0",
+      "jsonld",
+      0.9
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://ichef.britnews.test/news/1024/branded_news/abc/live/storm.jpg",
+      "og",
+      0.54
+    ]
+  ],
+  "logos": [
+    [
+      "icon: https://static.britnews.test/poster-1024x576.png",
+      "jsonld",
+      0.7
+    ],
+    [
+      "icon: https://static.britnews.test/mask.svg tint=#BB1919",
+      "link",
+      0.65
+    ],
+    [
+      "icon: https://static.britnews.test/apple-touch-icon.png",
+      "link",
+      0.55
+    ],
+    [
+      "favicon: https://www.britnews.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [
+    [
+      "#FFFFFF",
+      "meta",
+      0.75,
+      "theme-color"
+    ],
+    [
+      "#BB1919",
+      "link",
+      0.75,
+      "link, meta"
+    ]
+  ],
+  "canonical": [
+    [
+      "https://www.britnews.test/news/articles/c1234abcd",
+      "og",
+      0.8
+    ],
+    [
+      "https://www.britnews.test/news/articles/c1234abcd",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

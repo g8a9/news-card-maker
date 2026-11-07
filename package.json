@@ -23,7 +23,9 @@
     "e2e": "npm run e2e -w web",
     "smoke": "node scripts/smoke.ts",
     "registry:check": "node scripts/registry-check.ts",
-    "screenshots": "node scripts/screenshots.ts"
+    "screenshots": "node scripts/screenshots.ts",
+    "inspect": "node scripts/inspect.ts",
+    "capture-fixture": "node scripts/capture-fixture.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.6",

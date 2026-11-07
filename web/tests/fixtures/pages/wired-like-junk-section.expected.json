@@ -1,0 +1,95 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Phone Maker Bets on Repairable Design",
+      "jsonld",
+      1,
+      "jsonld, html, parsely, sailthru"
+    ],
+    [
+      "You Can Finally Fix Your Phone. Here's Why That Matters",
+      "og",
+      0.88
+    ]
+  ],
+  "description": [],
+  "kicker": [
+    [
+      "Gear",
+      "parsely",
+      0.7
+    ]
+  ],
+  "siteName": [
+    [
+      "Gadget Mag",
+      "og",
+      0.9,
+      "og, html"
+    ],
+    [
+      "gadgetmag.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [
+    [
+      [
+        "Priya Raman"
+      ],
+      "jsonld",
+      0.95,
+      "jsonld, sailthru"
+    ]
+  ],
+  "published": [
+    [
+      "2026-11-06 12:00 off=-300",
+      "jsonld",
+      0.95,
+      "jsonld, sailthru"
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://media.gadgetmag.test/photos/abc/master/pass/repair.jpg",
+      "og",
+      0.9
+    ],
+    [
+      "https://media.gadgetmag.test/photos/abc/master/pass/repair-full.jpg",
+      "sailthru",
+      0.7
+    ]
+  ],
+  "logos": [
+    [
+      "favicon: https://www.gadgetmag.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.gadgetmag.test/story/phone-maker-bets-on-repairable-design/",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 0.85,
+    "structuredTitle": true
+  }
+}

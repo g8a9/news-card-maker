@@ -1,0 +1,119 @@
+{
+  "lang": "de",
+  "dir": "ltr",
+  "title": [
+    [
+      "Hafenausbau: Teure Kaimauer, unklare Finanzierung",
+      "jsonld",
+      0.9
+    ],
+    [
+      "Wer zahlt für die neue Kaimauer?",
+      "og",
+      0.88
+    ],
+    [
+      "Hafenausbau: Wer zahlt für die neue Kaimauer?",
+      "html",
+      0.86,
+      "h1"
+    ]
+  ],
+  "description": [
+    [
+      "Der Bund will sich beteiligen, die Länder zögern. Eine Spurensuche im Hafen.",
+      "og",
+      0.85
+    ]
+  ],
+  "kicker": [],
+  "siteName": [
+    [
+      "DER KURIER",
+      "jsonld",
+      0.85,
+      "jsonld, html"
+    ],
+    [
+      "derkurier.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [
+    [
+      [
+        "Anna Berger"
+      ],
+      "jsonld",
+      0.9
+    ]
+  ],
+  "published": [
+    [
+      "2026-11-06 21:15 off=60",
+      "jsonld",
+      1,
+      "jsonld, meta, html"
+    ]
+  ],
+  "modified": [],
+  "images": [
+    [
+      "https://cdn.derkurier.test/images/hafen-1200.jpg",
+      "og",
+      0.9
+    ]
+  ],
+  "logos": [
+    [
+      "wordmark: https://cdn.derkurier.test/logo/kurier-60.png",
+      "jsonld",
+      0.7
+    ],
+    [
+      "favicon: https://www.derkurier.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [
+    [
+      "#E64415",
+      "meta",
+      0.75,
+      "theme-color"
+    ],
+    [
+      "#D03D12",
+      "meta",
+      0.4,
+      "theme-color"
+    ]
+  ],
+  "canonical": [
+    [
+      "https://www.derkurier.test/wirtschaft/hafen-ausbau-a-123.html",
+      "og",
+      0.8
+    ],
+    [
+      "https://www.derkurier.test/wirtschaft/hafen-ausbau-a-123.html",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {
+    "ogType": "article"
+  },
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": null,
+    "quality": 1,
+    "structuredTitle": true
+  }
+}

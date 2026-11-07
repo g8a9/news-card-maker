@@ -1,0 +1,50 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "nytimes-like.test",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [
+    [
+      "2026-11-06",
+      "url",
+      0.5
+    ]
+  ],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://www.nytimes-like.test/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://www.nytimes-like.test/2026/11/06/world/story.html",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": true,
+    "kind": "challenge",
+    "quality": 0.15,
+    "structuredTitle": false
+  }
+}

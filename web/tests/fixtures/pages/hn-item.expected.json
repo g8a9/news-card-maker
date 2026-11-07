@@ -1,0 +1,62 @@
+{
+  "lang": "en",
+  "dir": "ltr",
+  "title": [
+    [
+      "Show HN: A tiny static site generator",
+      "html",
+      0.5,
+      "title"
+    ]
+  ],
+  "description": [],
+  "kicker": [],
+  "siteName": [
+    [
+      "Hacker News",
+      "html",
+      0.45,
+      "title-tail"
+    ],
+    [
+      "news.ycombinator.com",
+      "url",
+      0.2
+    ]
+  ],
+  "authors": [],
+  "published": [],
+  "modified": [],
+  "images": [],
+  "logos": [
+    [
+      "favicon: https://news.ycombinator.com/y18.svg",
+      "link",
+      0.5
+    ],
+    [
+      "favicon: https://news.ycombinator.com/favicon.ico",
+      "heuristic",
+      0.3
+    ]
+  ],
+  "colors": [],
+  "canonical": [
+    [
+      "https://news.ycombinator.com/item?id=4242",
+      "url",
+      0.5
+    ]
+  ],
+  "links": {
+    "feeds": []
+  },
+  "flags": {},
+  "warnings": [],
+  "verdict": {
+    "blocked": false,
+    "kind": "no-metadata",
+    "quality": 0.1,
+    "structuredTitle": false
+  }
+}
