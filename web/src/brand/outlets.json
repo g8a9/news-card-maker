@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hacker-news",
+    "name": "Hacker News",
+    "domains": ["news.ycombinator.com"],
+    "colors": { "brand": "#FF6600", "paper": null },
+    "logo": {
+      "icon": {
+        "url": "https://news.ycombinator.com/y18.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "fonts": { "headline": "sans" },
+    "feeds": ["https://news.ycombinator.com/rss"],
+    "defaults": { "theme": "brand", "template": "headline", "headlineFont": "system" },
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  }
+]

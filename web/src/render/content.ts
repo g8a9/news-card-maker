@@ -13,6 +13,8 @@ export interface CardContent {
   date: string | null;
   updated: string | null;
   accessed: string | null;
+  /** Source-specific facts, such as Hacker News points and comments. */
+  extra: string | null;
   authors: string | null;
   url: string | null;
   locale: string;
@@ -29,6 +31,15 @@ const LABELS: Record<string, { updated: string; accessed: string }> = {
 
 const label = (locale: string, key: 'updated' | 'accessed'): string =>
   (LABELS[locale.toLowerCase().split('-')[0] as string] ?? LABELS.en)?.[key] as string;
+
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+function hnExtra(article: ArticleModel): string | null {
+  const hn = article.extras?.hn;
+  return hn
+    ? `${plural(hn.points, 'point', 'points')} · ${plural(hn.comments, 'comment', 'comments')}`
+    : null;
+}
 
 export function resolveLocale(style: CardStyle, article: ArticleModel, hostLocale: string): string {
   if (style.locale === 'article') return article.lang ?? hostLocale;
@@ -69,6 +80,7 @@ export function cardContent(
     accessed: style.show.accessed
       ? `${label(locale, 'accessed')} ${formatDate(today(options.now), locale, style.dateFormat)}`
       : null,
+    extra: hnExtra(article),
     authors:
       style.show.authors && authors && authors.length > 0 ? formatAuthors(authors, locale) : null,
     url: style.show.url

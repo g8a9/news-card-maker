@@ -79,7 +79,9 @@ function masthead(
 }
 
 function meta(content: CardContent): HTMLElement | null {
-  const first = [content.date, content.updated, content.accessed].filter((x): x is string => !!x);
+  const first = [content.date, content.extra, content.updated, content.accessed].filter(
+    (x): x is string => !!x,
+  );
   if (first.length === 0 && !content.authors && !content.url) return null;
 
   const start = h('span', { class: 'nc-meta-start' });

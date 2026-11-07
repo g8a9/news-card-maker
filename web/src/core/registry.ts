@@ -18,6 +18,8 @@ export interface Outlet {
   feeds?: string[];
   titleSuffixes?: string[];
   imageRewrites?: Array<{ pattern: string; replace: string }>;
+  /** Style defaults for this outlet's cards, applied when a card is first created. */
+  defaults?: { theme?: string; template?: string; headlineFont?: string };
   /** "blocked" outlets start their fallbacks in parallel with the direct fetch. */
   fetch?: 'ok' | 'blocked';
   verified?: string;
