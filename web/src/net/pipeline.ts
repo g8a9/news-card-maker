@@ -5,8 +5,9 @@
 import { assessPage, type Verdict } from '../core/blocked.ts';
 import { decodeBytes } from '../core/charset.ts';
 import { extract } from '../core/extract/index.ts';
+import { type ManualInput, manualExtraction } from '../core/manual.ts';
 import { buildModel } from '../core/model.ts';
-import { findOutlet, type Outlet } from '../core/registry.ts';
+import { findOutlet, findOutletById, type Outlet } from '../core/registry.ts';
 import type {
   ArticleModel,
   Candidate,
@@ -144,6 +145,33 @@ export async function resolveFromHtml(
     provenance: [provenance],
     outlet,
     verdict,
+  });
+  return finish(model, options);
+}
+
+/** Build a card from fields typed by hand (manual mode). The outlet's logo and colour still load. */
+export async function resolveManual(
+  input: ManualInput,
+  options: PipelineOptions,
+): Promise<ArticleModel> {
+  const outlets = options.outlets ?? [];
+  let url = '';
+  if (input.url?.trim()) {
+    const parsed = normalizeInput(input.url);
+    if (!parsed.ok) {
+      throw new PipelineError('INVALID_INPUT', 'Paste a full link, starting with https://');
+    }
+    url = parsed.url;
+  }
+  const outlet =
+    (input.outletId ? findOutletById(outlets, input.outletId) : null) ??
+    (url ? findOutlet(outlets, hostOf(url)) : null);
+  const extraction = manualExtraction({ ...input, url }, outlet, options.now);
+  const model = buildModel(extraction, {
+    inputUrl: url,
+    finalUrl: url,
+    provenance: ['manual'],
+    outlet,
   });
   return finish(model, options);
 }

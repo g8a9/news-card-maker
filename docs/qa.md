@@ -43,6 +43,7 @@ read their clipboard.
 | ------------------------------------------------------------------------------------------ | ------ |
 | Paste five articles from outlets you read; headline, outlet, date and image are right      | ☐      |
 | The bookmarklet works on a live Economist article in Chrome and in Safari (M6 acceptance)  | ☐      |
+| The same on a live Guardian, NYT and FT article, and in Firefox                            | ☐      |
 | `npm run smoke -- --proxy <deployed proxy>` report has no surprises after the first deploy | ☐      |
 
 ## Keyboard and accessibility
@@ -51,3 +52,21 @@ read their clipboard.
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------ |
 | Whole flow with the keyboard only in Chrome, Firefox and Safari (Safari needs "Press Tab to highlight each item" turned on, or Option+Tab) | ☐      |
 | VoiceOver reads the preview as a picture with the generated alt text and announces toasts                                                  | ☐      |
+
+## Fallbacks (PLAN.md §11, M6)
+
+Automated: the bookmarklet code from the install dialog is run on a served article page in Chromium,
+Firefox and WebKit and the card appears (`tests/e2e/fallbacks.spec.ts`); so are the blocked → paste flow,
+a dropped `.html` file and manual mode. What tests cannot do is use a real bookmark or a real site.
+
+| Check                                                                                                                                        | Status |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| Chrome / Edge: drag "Make news card" from the dialog to the bookmarks bar, open a live article, click it: the card appears here              | ☐      |
+| Safari (macOS): same, dragging to the Favorites bar                                                                                          | ☐      |
+| Firefox: same. On a site with a strict Content-Security-Policy the bookmark may do nothing; the dialog says to use Paste page source instead | ☐      |
+| iOS Safari: bookmark any page, edit it, paste the code from **Copy code** as the address; run it from the bookmarks list on an article       | ☐      |
+| A paywalled or bot-protected article (Economist, FT, NYT) read with the bookmarklet gives headline, subtitle and date                        | ☐      |
+| View Source (Ctrl/⌘ U) → select all → paste into **Paste page source**: card appears; the address is found without typing it                 | ☐      |
+| Save the page as "Webpage, HTML only" and drop the file on the landing page and on a card: the paste dialog opens with the file ready        | ☐      |
+| Start from scratch with an outlet picked: logo and colours arrive; with no link, the card prints no address                                  | ☐      |
+| A blocked link (for example an Economist article) shows the message with three actions and no card; Copy and Download are not offered        | ☐      |

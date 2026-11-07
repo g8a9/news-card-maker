@@ -950,3 +950,124 @@ kbd {
   justify-content: flex-end;
   gap: 8px;
 }
+
+/* ---- Fallback dialogs: bookmarklet, page source, manual ------------------------------------ */
+.steps {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding-inline-start: 20px;
+  color: var(--text);
+}
+.bookmarklet-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.bookmarklet-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--raised);
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  cursor: grab;
+}
+.bookmarklet-link:hover {
+  border-color: #55555e;
+}
+.dialog-feedback {
+  flex: 1 1 200px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.form-field {
+  display: grid;
+  gap: 6px;
+  min-inline-size: 0;
+}
+.form-label {
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 12px;
+}
+.dialog-error {
+  min-block-size: 18px;
+  margin: 0;
+  color: var(--danger);
+  font-size: 13px;
+}
+.dialog-error:empty {
+  display: none;
+}
+.dialog-actions-split {
+  justify-content: space-between;
+}
+.source-area {
+  font-family: var(--font-url);
+  font-size: 12px;
+  white-space: pre;
+  overflow: auto;
+}
+.file-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--raised);
+}
+.file-row[hidden] {
+  display: none;
+}
+.file-name {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- A page we could not read: the message and the ways forward replace the card ------------ */
+.editor[data-blocked='true'] .stage,
+.editor[data-blocked='true'] .actionbar,
+.editor[data-blocked='true'] .panel {
+  display: none;
+}
+.editor[data-blocked='true'] .stage-area {
+  align-items: center;
+  justify-content: center;
+  min-block-size: 50vh;
+}
+.editor[data-blocked='true'] .banner-slot {
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+}
+.editor[data-blocked='true'] .banner {
+  flex-direction: column;
+  align-items: stretch;
+  inline-size: min(560px, calc(100% - 32px));
+  gap: 18px;
+  padding: 22px 24px;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.editor[data-blocked='true'] .banner-text {
+  flex: none;
+}
+@media (max-width: 520px) {
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -9,7 +9,12 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit -p .",
     "test": "vitest run",
-    "e2e": "playwright test"
+    "e2e": "playwright test",
+    "predev": "node ../scripts/build-bookmarklet.ts",
+    "prebuild": "node ../scripts/build-bookmarklet.ts",
+    "pretest": "node ../scripts/build-bookmarklet.ts",
+    "pretypecheck": "node ../scripts/build-bookmarklet.ts",
+    "prepreview": "node ../scripts/build-bookmarklet.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.65.0",

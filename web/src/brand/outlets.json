@@ -1,9 +1,126 @@
 [
   {
+    "id": "economist",
+    "name": "The Economist",
+    "domains": ["economist.com"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/65/The_Economist_Logo.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.economist.com/latest/rss.xml"],
+    "fetch": "blocked",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "nyt",
+    "name": "The New York Times",
+    "domains": ["nytimes.com", "nyt.com"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/The_New_York_Times_logo.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml"],
+    "fetch": "blocked",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "guardian",
+    "name": "The Guardian",
+    "domains": ["theguardian.com", "guardian.co.uk"],
+    "colors": {
+      "brand": "#052962",
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/75/The_Guardian_2018.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.theguardian.com/world/rss"],
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "bbc",
+    "name": "BBC News",
+    "domains": ["bbc.co.uk", "bbc.com"],
+    "colors": {
+      "brand": "#BB1919",
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/62/BBC_News_2019.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://feeds.bbci.co.uk/news/rss.xml"],
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "ft",
+    "name": "Financial Times",
+    "domains": ["ft.com"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Financial_Times_corporate_logo_2012.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.ft.com/rss/home"],
+    "fetch": "blocked",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "404-media",
+    "name": "404 Media",
+    "domains": ["404media.co"],
+    "colors": {
+      "brand": "#E50B4F",
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/1/10/404_Media_logo.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.404media.co/rss/"],
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
     "id": "hacker-news",
     "name": "Hacker News",
     "domains": ["news.ycombinator.com"],
-    "colors": { "brand": "#FF6600", "paper": null },
+    "colors": {
+      "brand": "#FF6600",
+      "paper": null
+    },
     "logo": {
       "icon": {
         "url": "https://news.ycombinator.com/y18.svg",
@@ -11,9 +128,71 @@
         "onLight": "original"
       }
     },
-    "fonts": { "headline": "sans" },
+    "fonts": {
+      "headline": "sans"
+    },
     "feeds": ["https://news.ycombinator.com/rss"],
-    "defaults": { "theme": "brand", "template": "headline", "headlineFont": "system" },
+    "defaults": {
+      "theme": "brand",
+      "template": "headline",
+      "headlineFont": "system"
+    },
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "verge",
+    "name": "The Verge",
+    "domains": ["theverge.com"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/a/af/The_Verge_logo.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.theverge.com/rss/index.xml"],
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "il-post",
+    "name": "Il Post",
+    "domains": ["ilpost.it"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Il_Post_logo.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "fetch": "ok",
+    "verified": "2026-11-07"
+  },
+  {
+    "id": "corriere",
+    "name": "Corriere della Sera",
+    "domains": ["corriere.it"],
+    "colors": {
+      "brand": null,
+      "paper": null
+    },
+    "logo": {
+      "wordmark": {
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Corriere_della_Sera.svg",
+        "onDark": "mono",
+        "onLight": "original"
+      }
+    },
+    "feeds": ["https://www.corriere.it/rss/homepage.xml"],
     "fetch": "ok",
     "verified": "2026-11-07"
   }

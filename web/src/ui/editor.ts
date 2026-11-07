@@ -266,9 +266,14 @@ export function createEditor(store: Store<AppState>, deps: EditorDeps): Editor {
       if (s.loading)
         loadingLine.textContent = s.loading.slow
           ? 'Still trying: some sites are slow'
-          : `Reading ${s.loading.host}…`;
+          : s.loading.host
+            ? `Reading ${s.loading.host}…`
+            : 'Preparing the card…';
 
-      const ready = !!a && s.phase === 'editing';
+      // A page we could not read at all has no card: the message and the ways forward take its place.
+      const blocked = a?.status === 'blocked';
+      element.dataset.blocked = String(blocked);
+      const ready = !!a && s.phase === 'editing' && !blocked;
       copyBtn.disabled = !ready;
       downloadBtn.disabled = !ready;
       moreBtn.disabled = !ready;
