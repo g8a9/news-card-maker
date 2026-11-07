@@ -1,0 +1,309 @@
+/*
+ * Card styles (PLAN.md §7). Every dimension is a multiple of --u (card width / 100), set from JS,
+ * so a card scales with its width without container queries. Logical properties throughout, so RTL
+ * mirrors by itself. No backdrop-filter, filter, mask-image or blend modes: they export unreliably.
+ */
+.nc-card,
+.nc-card *,
+.nc-frame {
+  box-sizing: border-box;
+}
+.nc-card * {
+  margin: 0;
+}
+
+.nc-card {
+  --density: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  inline-size: var(--w);
+  block-size: var(--h, auto);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: calc(var(--u) * 1.6);
+  line-height: 1.4;
+  text-align: start;
+  border-radius: calc(var(--u) * var(--radius, 1.6));
+  overflow: hidden;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.nc-card.nc-border-hairline {
+  box-shadow: inset 0 0 0 max(1px, calc(var(--u) * 0.12)) var(--rule);
+}
+.nc-card:lang(ja),
+.nc-card:lang(zh),
+.nc-card:lang(ko) {
+  line-break: strict;
+}
+.nc-density-compact {
+  --density: 0.8;
+}
+.nc-density-airy {
+  --density: 1.25;
+}
+.nc-align-center {
+  text-align: center;
+}
+
+/* ---- media -------------------------------------------------------------------------------- */
+.nc-media {
+  position: relative;
+  flex: none;
+  inline-size: 100%;
+  block-size: var(--media-h);
+  overflow: hidden;
+  background: var(--rule);
+}
+.nc-media img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: var(--fx, 50%) var(--fy, 50%);
+  transform: scale(var(--zoom, 1));
+  transform-origin: var(--fx, 50%) var(--fy, 50%);
+}
+.nc-top-bar {
+  flex: none;
+  block-size: calc(var(--u) * 1);
+  background: var(--accent);
+}
+
+/* ---- body --------------------------------------------------------------------------------- */
+.nc-body {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 1.8 * var(--density));
+  padding: calc(var(--u) * 5 * var(--density));
+}
+.nc-text {
+  flex: 1 1 auto;
+  min-block-size: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--u) * 1.3 * var(--density));
+  overflow: hidden;
+}
+.nc-auto .nc-text {
+  flex: none;
+  overflow: visible;
+}
+
+.nc-masthead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: calc(var(--u) * 1.3);
+  min-block-size: calc(var(--u) * 3.2);
+  min-inline-size: 0;
+}
+.nc-align-center .nc-masthead {
+  justify-content: center;
+}
+.nc-logo {
+  display: block;
+  flex: none;
+  block-size: calc(var(--u) * 3.2);
+  inline-size: auto;
+  max-inline-size: calc(var(--u) * 28);
+  object-fit: contain;
+  object-position: start;
+}
+.nc-logo.nc-logo-icon {
+  block-size: calc(var(--u) * 4);
+  inline-size: calc(var(--u) * 4);
+}
+.nc-logo.nc-logo-rounded {
+  border-radius: 22%;
+}
+.nc-monogram {
+  flex: none;
+  display: grid;
+  place-items: center;
+  block-size: calc(var(--u) * 4);
+  inline-size: calc(var(--u) * 4);
+  border-radius: 22%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: calc(var(--u) * 2.4);
+  line-height: 1;
+}
+.nc-site {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: calc(var(--u) * 2);
+  font-weight: 650;
+  letter-spacing: -0.005em;
+}
+
+.nc-kicker {
+  flex: none;
+  font-size: calc(var(--u) * 1.5);
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.nc-headline {
+  flex: none;
+  font-family: var(--font-head);
+  font-size: calc(var(--u) * var(--hu, 4.4));
+  font-weight: var(--head-weight, 650);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+.nc-card:lang(ja) .nc-headline,
+.nc-card:lang(zh) .nc-headline,
+.nc-card:lang(ko) .nc-headline {
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+.nc-deck {
+  flex: none;
+  font-size: calc(var(--u) * 2.1);
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--deck-lines, 3);
+  line-clamp: var(--deck-lines, 3);
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+.nc-rule {
+  flex: none;
+  block-size: max(1px, calc(var(--u) * 0.1));
+  background: var(--rule);
+}
+.nc-meta {
+  flex: none;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: calc(var(--u) * 2);
+  font-size: calc(var(--u) * 1.5);
+  line-height: 1.3;
+  color: var(--muted);
+  min-inline-size: 0;
+}
+.nc-align-center .nc-meta {
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--u) * 0.5);
+}
+.nc-meta-start {
+  min-inline-size: 0;
+  flex: 0 1 auto;
+}
+.nc-meta-url {
+  min-inline-size: 0;
+  flex: 0 1 auto;
+  font-family: var(--font-mono);
+  font-size: calc(var(--u) * 1.4);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+.nc-hide-deck .nc-deck,
+.nc-hide-kicker .nc-kicker,
+.nc-hide-authors .nc-authors {
+  display: none;
+}
+
+/* ---- Classic ------------------------------------------------------------------------------ */
+.nc-t-classic .nc-body {
+  justify-content: flex-start;
+}
+.nc-t-classic .nc-text {
+  justify-content: flex-start;
+}
+
+/* ---- Split -------------------------------------------------------------------------------- */
+.nc-t-split {
+  flex-direction: row;
+}
+.nc-auto.nc-t-split {
+  min-block-size: calc(var(--w) * 0.5);
+}
+.nc-t-split .nc-media {
+  inline-size: 42%;
+  block-size: auto;
+  align-self: stretch;
+}
+.nc-t-split.nc-img-start .nc-media {
+  order: -1;
+}
+.nc-t-split .nc-body {
+  min-inline-size: 0;
+  justify-content: space-between;
+}
+.nc-t-split .nc-text {
+  justify-content: center;
+}
+/* The text column is narrow: stack the meta line instead of squeezing date and URL together. */
+.nc-t-split .nc-meta {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(var(--u) * 0.5);
+}
+.nc-t-split .nc-meta-url {
+  max-inline-size: 100%;
+}
+
+/* ---- Headline ----------------------------------------------------------------------------- */
+.nc-t-headline .nc-text {
+  justify-content: center;
+}
+.nc-t-headline .nc-bar {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  inline-size: calc(var(--u) * 0.6);
+  background: var(--accent);
+}
+.nc-t-headline .nc-body {
+  padding-inline: calc(var(--u) * 6 * var(--density));
+}
+
+/* Fixed Classic cards are tight: shave the vertical padding and gaps so a deck can still fit.
+   (Placed after the other templates so it does not precede less specific .nc-body rules.) */
+.nc-fixed.nc-t-classic .nc-body {
+  padding-block: calc(var(--u) * 3.6 * var(--density));
+  gap: calc(var(--u) * 1.4 * var(--density));
+}
+
+/* ---- Frame -------------------------------------------------------------------------------- */
+.nc-frame {
+  --frame-pad: 6;
+  display: block;
+  inline-size: calc(var(--w) + var(--u) * var(--frame-pad) * 2);
+  padding: calc(var(--u) * var(--frame-pad));
+  background: var(--frame-bg, transparent);
+  background-size: cover;
+  background-position: center;
+}
+.nc-frame .nc-card {
+  box-shadow: var(--shadow, none);
+}
+.nc-frame .nc-card.nc-border-hairline {
+  box-shadow:
+    var(--shadow, none),
+    inset 0 0 0 max(1px, calc(var(--u) * 0.12)) var(--rule);
+}

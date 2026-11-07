@@ -4,5 +4,5 @@
     "lib": ["ES2023", "DOM", "DOM.Iterable"],
     "types": ["node"]
   },
-  "include": ["*.ts", "../web/src/core", "../web/src/net", "../web/src/brand"]
+  "include": ["*.ts", "../web/src/core", "../web/src/net", "../web/src/brand", "../web/src/types"]
 }
