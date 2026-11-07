@@ -252,12 +252,16 @@ test.describe('customising', () => {
     await open(page);
     const media = page.locator('.stage-scaler .nc-media');
     await expect(media).toBeVisible();
-    const box = (await media.boundingBox()) as {
-      x: number;
-      y: number;
-      width: number;
-      height: number;
-    };
+    // Fonts that arrive late make the stage render the card again, which swaps the element for a new
+    // one; ask for its box until there is one, instead of assuming the first answer is a box.
+    let measured: { x: number; y: number; width: number; height: number } | null = null;
+    await expect
+      .poll(async () => {
+        measured = await media.boundingBox();
+        return measured !== null;
+      })
+      .toBe(true);
+    const box = measured as unknown as { x: number; y: number; width: number; height: number };
     await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
     await page.mouse.down();
     await page.mouse.move(box.x + box.width / 2 + 60, box.y + box.height / 2 + 30, { steps: 5 });

@@ -63,7 +63,7 @@ export function bookmarkletDialog(deps: BookmarkletDeps): DialogContent {
       h(
         'p',
         { class: 'dialog-note' },
-        'Only the details a link preview shows (headline, description, date, image and logo addresses) travel back, inside the address of this page, which no server receives. The app then loads the image and logo through the fetch service, as it does for any link.',
+        "Only the page's preview details travel back (the tags a link preview reads, its main headings and dates, and its header logo), never the article text. They go inside the address of this page, which no server receives. The app then loads the image and logo through the fetch service, as it does for any link.",
       ),
       h(
         'p',

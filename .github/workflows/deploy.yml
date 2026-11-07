@@ -1,0 +1,139 @@
+name: Deploy
+
+# On every push to main: build the site and publish it to GitHub Pages. The proxy (a Cloudflare Worker)
+# is deployed too, but only when something under proxy/ changed, or when asked for by hand.
+# One-time setup for the owner is in the README ("Deploying").
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      proxy:
+        description: Also deploy the proxy (Cloudflare Worker)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# One deploy at a time. A newer push waits for the running one instead of cancelling it half way.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  changes:
+    name: Did the proxy change?
+    runs-on: ubuntu-latest
+    outputs:
+      proxy: ${{ steps.diff.outputs.proxy }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - id: diff
+        env:
+          BEFORE: ${{ github.event.before }}
+          FORCED: ${{ inputs.proxy }}
+        run: |
+          zero=0000000000000000000000000000000000000000
+          if [ "$FORCED" = "true" ]; then
+            proxy=true
+          elif [ -z "$BEFORE" ] || [ "$BEFORE" = "$zero" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            proxy=true # a first push, or history we cannot compare with: deploy to be safe
+          elif git diff --name-only "$BEFORE" "$GITHUB_SHA" | grep -q '^proxy/'; then
+            proxy=true
+          else
+            proxy=false
+          fi
+          echo "proxy=$proxy" >> "$GITHUB_OUTPUT"
+          echo "Deploy the proxy: $proxy"
+
+  web:
+    name: Build the site
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Check that the proxy address is set
+        env:
+          PROXY_URL: ${{ vars.PROXY_URL }}
+        run: |
+          if [ -z "$PROXY_URL" ]; then
+            echo "::error::Set the PROXY_URL repository variable (Settings, Secrets and variables, Actions, Variables) to the address of the deployed proxy. See the README, section Deploying."
+            exit 1
+          fi
+      # The end-to-end suite runs in ci.yml on every push; this is the quick guard before publishing.
+      - name: Lint, typecheck and unit tests
+        run: |
+          npm run lint
+          npm run check:html
+          npm run typecheck
+          npm test
+      - name: Build
+        run: npm run build
+        env:
+          VITE_PROXY_URL: ${{ vars.PROXY_URL }}
+          # A project site lives under /<repository>/. Set BASE_PATH to / when using a custom domain.
+          VITE_BASE: ${{ vars.BASE_PATH || format('/{0}/', github.event.repository.name) }}
+          VITE_REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web/dist
+
+  deploy-web:
+    name: Publish the site
+    needs: web
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+
+  deploy-proxy:
+    name: Deploy the proxy
+    needs: changes
+    if: needs.changes.outputs.proxy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Proxy tests
+        run: npm test -w proxy
+      - name: Work out the allowed origin
+        env:
+          OWNER: ${{ github.repository_owner }}
+          ORIGINS: ${{ vars.ALLOWED_ORIGINS }}
+        run: |
+          # Browsers send the origin of the page, which for GitHub Pages is the owner's github.io host.
+          # Set the ALLOWED_ORIGINS variable (comma separated) to use a custom domain instead.
+          echo "ALLOWED_ORIGINS=${ORIGINS:-https://${OWNER,,}.github.io}" >> "$GITHUB_ENV"
+      - uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: proxy
+          command: deploy
+          vars: |
+            ALLOWED_ORIGINS
+            USER_AGENT
+        env:
+          # An honest user agent that says who is asking and where to complain (PLAN.md §4.2).
+          USER_AGENT: Mozilla/5.0 (compatible; NewsCardMaker/1.0; +${{ github.server_url }}/${{ github.repository }})

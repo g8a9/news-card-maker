@@ -6,18 +6,21 @@ copies it to the clipboard as a PNG. `PLAN.md` is the full design; this file is 
 
 ## Commands
 
-| Command                           | What it does                                                                  |
-| --------------------------------- | ----------------------------------------------------------------------------- |
-| `npm install`                     | Install all workspaces (Node 24+; `.nvmrc` pins the version CI uses)          |
-| `npm run dev`                     | Proxy (`wrangler dev`, :8787) and web app (Vite, :5173) together              |
-| `npm run dev -w web` / `-w proxy` | Run one side only                                                             |
-| `npm run lint` / `npm run format` | Biome check / check with fixes                                                |
-| `npm run check:html`              | Fails if `innerHTML`-style APIs appear in `web/src`                           |
-| `npm run typecheck`               | `tsc --noEmit` for web, proxy and scripts                                     |
-| `npm test`                        | Vitest: web unit tests (jsdom) and proxy tests (Workers runtime)              |
-| `npm run build`                   | Production build of the web app (`web/dist`)                                  |
-| `npm run e2e`                     | Playwright (Chromium, Firefox, WebKit) against a built, preview-served app    |
-| `npm run smoke`                   | Live smoke run against real outlets (not a merge gate; needs a running proxy) |
+| Command                           | What it does                                                                   |
+| --------------------------------- | ------------------------------------------------------------------------------ |
+| `npm install`                     | Install all workspaces (Node 24+; `.nvmrc` pins the version CI uses)           |
+| `npm run dev`                     | Proxy (`wrangler dev`, :8787) and web app (Vite, :5173) together               |
+| `npm run dev -w web` / `-w proxy` | Run one side only                                                              |
+| `npm run lint` / `npm run format` | Biome check / check with fixes                                                 |
+| `npm run check:html`              | Fails if `innerHTML`-style APIs appear in `web/src`                            |
+| `npm run typecheck`               | `tsc --noEmit` for web, proxy and scripts                                      |
+| `npm test`                        | Vitest: web unit tests (jsdom) and proxy tests (Workers runtime)               |
+| `npm run build`                   | Production build of the web app (`web/dist`)                                   |
+| `npm run e2e`                     | Playwright (Chromium, Firefox, WebKit) against a built, preview-served app     |
+| `npm run smoke`                   | Live smoke run against real outlets (not a merge gate; needs a running proxy)  |
+| `npm run registry:check`          | Registry shape; with `-- --local` also loads every logo and feed via the proxy |
+| `npm run inspect -- <url>`        | What extraction finds on one page (through a local proxy)                      |
+| `npm run screenshots`             | Regenerates `docs/screenshots` for the README from synthetic data              |
 
 Run lint, check:html, typecheck, test, build and e2e before calling anything done.
 
@@ -31,6 +34,8 @@ Run lint, check:html, typecheck, test, build and e2e before calling anything don
 - `web/src/core` is pure: no network, no globals except a `Document` passed in. `web/src/net` does the
   fetching (proxy, adapters, pipeline). `brand/` holds logos, colours and themes. `render/` builds the
   card DOM. `export/` turns it into a PNG. `ui/` is the editor. `state/` is the store.
+- `web/src/bookmarklet/generated.ts` is built by `scripts/build-bookmarklet.ts` (npm `pre*` hooks run it before
+  dev, build, test, typecheck and preview). It is gitignored. Never edit it, and never commit it.
 - The card is HTML/CSS sized in a `--u` unit (width / 100), exported with a DOM-to-image library behind
   `export/capture.ts` (see `docs/decisions/0001-capture-library.md`).
 
@@ -45,7 +50,9 @@ Run lint, check:html, typecheck, test, build and e2e before calling anything don
    `http(s)` (or `blob:` / `data:image` for images); SVG is only shown through `<img>`; parsed documents
    are never attached to the live DOM. `npm run check:html` enforces the no-`innerHTML` part.
 5. Proxy hardening (PLAN.md §4.3): origin allowlist, target guards, rate limits, size and type caps, no cookies, no URLs in logs.
-6. The app CSP is a `<meta>` tag (GitHub Pages cannot set headers). Keep it in sync with the network endpoints in use.
+6. The app CSP is a `<meta>` tag (GitHub Pages cannot set headers), built by `web/csp.ts` and injected into the
+   built `index.html` by `vite.config.ts`. Keep it in sync with the network endpoints in use; `csp.spec.ts`
+   runs every feature under it and fails on any violation.
 7. Privacy: no analytics, and the README lists every third party and how to switch off the optional ones.
 8. Logos identify the source of a citation. Reference publisher-hosted logo URLs; do not bundle third-party logo files or article images in the repo. Fixtures and gallery models use synthetic data.
 
@@ -72,5 +79,6 @@ milestone. Say plainly what was not verified (for example real Safari clipboard 
 
 ## Things that need the owner
 
-Cloudflare login or API token, GitHub Pages settings, creating the remote repository, and pushing. Prepare
-the workflows and docs; do not attempt these. `wrangler dev` works locally without an account.
+Cloudflare login or API token, GitHub Pages settings, the `PROXY_URL` repository variable, creating the remote
+repository, and pushing. The workflows and the README's "Deploying" section are written; do not attempt these.
+`wrangler dev` works locally without an account.

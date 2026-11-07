@@ -1,0 +1,62 @@
+name: Smoke
+
+# Weekly check against the real world (PLAN.md §13.5, §14): does every registry logo and feed still load,
+# and does extraction still work on the newest article of each outlet? Not a merge gate; the reports are
+# uploaded as an artifact for the owner to read.
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Check that the proxy address is set
+        env:
+          PROXY_URL: ${{ vars.PROXY_URL }}
+        run: |
+          if [ -z "$PROXY_URL" ]; then
+            echo "::error::Set the PROXY_URL repository variable to the address of the deployed proxy."
+            exit 1
+          fi
+      - name: Work out the origin to send
+        env:
+          OWNER: ${{ github.repository_owner }}
+          ORIGINS: ${{ vars.ALLOWED_ORIGINS }}
+        run: |
+          # The proxy only answers allowed origins, so the check presents the site's own.
+          first="${ORIGINS%%,*}"
+          echo "SMOKE_ORIGIN=${first:-https://${OWNER,,}.github.io}" >> "$GITHUB_ENV"
+      - name: Registry check (every logo and feed loads)
+        env:
+          PROXY_URL: ${{ vars.PROXY_URL }}
+        run: npm run registry:check -- --proxy "$PROXY_URL" --origin "$SMOKE_ORIGIN" | tee registry-report.txt
+      - name: Smoke run (newest article of each outlet)
+        if: always()
+        env:
+          PROXY_URL: ${{ vars.PROXY_URL }}
+        run: |
+          npm run smoke -- --proxy "$PROXY_URL" --origin "$SMOKE_ORIGIN" --out smoke-report.md
+          head -n 3 smoke-report.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload the reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: smoke-reports
+          path: |
+            smoke-report.md
+            registry-report.txt
+          retention-days: 60
+          if-no-files-found: warn

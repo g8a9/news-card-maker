@@ -1,4 +1,5 @@
 // The landing page (PLAN.md §9.2): one text box, three real examples, and the escape hatches.
+import { REPO_URL } from '../config.ts';
 import { normalizeInput } from '../core/url.ts';
 import { h } from '../render/h.ts';
 import type { AppState } from '../state/app-state.ts';
@@ -125,17 +126,20 @@ export function createLanding(store: Store<AppState>, on: LandingHandlers): HTML
       'footer',
       { class: 'landing-footer' },
       h('span', null, 'Open source · No tracking · Logos and headlines belong to their publishers'),
-      h(
-        'a',
-        {
-          class: 'icon-link',
-          href: 'https://github.com/',
-          'aria-label': 'Source code on GitHub',
-          rel: 'noopener',
-          target: '_blank',
-        },
-        icon('github', 16),
-      ),
+      // Only when the build knows the repository (VITE_REPO_URL): there is no place to link to otherwise.
+      REPO_URL
+        ? h(
+            'a',
+            {
+              class: 'icon-link',
+              href: REPO_URL,
+              'aria-label': 'Source code on GitHub',
+              rel: 'noopener',
+              target: '_blank',
+            },
+            icon('github', 16),
+          )
+        : null,
     ),
   );
 

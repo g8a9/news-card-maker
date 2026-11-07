@@ -29,13 +29,15 @@ const { values: args } = parseArgs({
     blocked: { type: 'boolean', default: false },
     out: { type: 'string', default: join(ROOT, 'smoke-report.md') },
     delay: { type: 'string', default: '400' },
+    // A report that is safe to commit: found / missing instead of headlines, and no article addresses.
+    redact: { type: 'boolean', default: false },
   },
 });
 
 const proxyUrl = args.proxy ?? (args.local ? 'http://localhost:8787' : undefined);
 if (!proxyUrl) {
   console.error(
-    'Usage: npm run smoke -- --local | --proxy <url> [--only "BBC"] [--blocked] [--out file.md]',
+    'Usage: npm run smoke -- --local | --proxy <url> [--only "BBC"] [--blocked] [--redact] [--out file.md]',
   );
   process.exit(2);
 }
@@ -48,11 +50,12 @@ const parseHtml = (html: string): Document =>
 
 const headers = { Origin: args.origin as string, 'Accept-Language': 'en' };
 
-// The proxy allows 30 page fetches per minute per IP. Stay under it instead of tripping the limiter.
+// The proxy allows 30 page fetches per minute per IP (approximately, per location). Stay well under it: one
+// request every three seconds is 20 a minute.
 let lastTextRequest = 0;
 const pacedFetch: typeof fetch = async (input, init) => {
   if (String(input).includes('/api/text')) {
-    const wait = lastTextRequest + 2200 - Date.now();
+    const wait = lastTextRequest + 3000 - Date.now();
     if (wait > 0) await new Promise((r) => setTimeout(r, wait));
     lastTextRequest = Date.now();
   }
@@ -249,13 +252,17 @@ async function main() {
     '|---|---|---|---|---|---|---|---|---|',
     ...rows.map(
       (r) =>
-        `| ${r.name} | ${r.ok ? 'ok' : 'FAIL'} | ${cell(r.status, 40)} | ${cell(r.title, 70)} | ${cell(r.site, 24)} | ${r.date || '-'} | ${cell(r.image, 30)} | ${cell(r.logo, 40)} | ${cell(r.notes.join('; '), 80)} |`,
+        `| ${r.name} | ${r.ok ? 'ok' : 'FAIL'} | ${cell(r.status, 40)} | ${args.redact ? (r.title ? 'found' : 'missing') : cell(r.title, 70)} | ${cell(r.site, 24)} | ${r.date || '-'} | ${cell(r.image, 30)} | ${cell(r.logo, 40)} | ${cell(r.notes.join('; '), 80)} |`,
     ),
     '',
-    '## URLs',
-    '',
-    ...rows.map((r) => `- ${r.name} (${r.via || 'n/a'}): ${r.url || '-'}`),
-    '',
+    ...(args.redact
+      ? ['Headlines and article addresses are left out of this copy of the report.', '']
+      : [
+          '## URLs',
+          '',
+          ...rows.map((r) => `- ${r.name} (${r.via || 'n/a'}): ${r.url || '-'}`),
+          '',
+        ]),
   ];
   writeFileSync(args.out as string, lines.join('\n'));
   console.log(`\n${good}/${rows.length} ok (${cooperative.length} reachable). Report: ${args.out}`);
