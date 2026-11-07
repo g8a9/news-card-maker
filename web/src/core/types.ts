@@ -131,6 +131,8 @@ export interface ArticleModel {
   provenance: Provenance[];
   status: 'ok' | 'partial' | 'blocked';
   blockReason?: string;
+  /** Why a page counts as blocked: challenge, paywall-wall, geo, consent-wall, not-html or no-metadata. */
+  blockKind?: string;
   fields: {
     title: Field<string>;
     description: Field<string>;

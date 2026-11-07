@@ -105,6 +105,7 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
 
   async function render(): Promise<void> {
     const mine = ++token;
+    element.dataset.rendering = 'true';
     const { article, style, phase } = store.get();
     if (!article) {
       current = null;
@@ -112,6 +113,7 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
       element.dataset.empty = phase === 'loading' ? 'false' : 'true';
       scaler.setAttribute('aria-label', 'Loading preview');
       scaleToFit();
+      element.dataset.rendering = 'false';
       return;
     }
     const outlet = findOutletById(deps.outlets, article.brand.outletId ?? '');
@@ -135,6 +137,7 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
     sizer.style.setProperty('--ring', accent ? `${accent}66` : 'transparent');
     scaleToFit();
 
+    element.dataset.rendering = 'false';
     const size = measure();
     store.set((s) => {
       const sameFit = JSON.stringify(s.fit) === JSON.stringify(report);

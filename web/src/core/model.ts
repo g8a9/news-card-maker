@@ -84,6 +84,7 @@ export function buildModel(e: Extraction, o: BuildOptions): ArticleModel {
     provenance: o.provenance,
     status,
     blockReason: verdict?.blocked || verdict?.kind === 'no-metadata' ? verdict.reason : undefined,
+    blockKind: verdict?.blocked || verdict?.kind === 'no-metadata' ? verdict.kind : undefined,
     fields: {
       title: fieldOf(e.title),
       description: fieldOf(e.description),

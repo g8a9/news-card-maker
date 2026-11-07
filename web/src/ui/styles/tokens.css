@@ -1,3 +1,4 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: reduced motion must override every component's animation */
 /* Design tokens for the app chrome (PLAN.md §9.1). The UI is dark only; cards have their own themes. */
 :root {
   color-scheme: dark;

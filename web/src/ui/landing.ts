@@ -23,7 +23,7 @@ export interface LandingHandlers {
 export function createLanding(store: Store<AppState>, on: LandingHandlers): HTMLElement {
   const input = h('input', {
     id: 'landing-url',
-    class: 'landing-input',
+    class: 'input landing-input',
     type: 'text',
     inputmode: 'url',
     autocomplete: 'off',
@@ -43,13 +43,22 @@ export function createLanding(store: Store<AppState>, on: LandingHandlers): HTML
   const error = h('p', { id: 'landing-error', class: 'landing-error', role: 'alert' });
 
   const refresh = () => {
-    const ok = normalizeInput(input.value).ok;
-    create.disabled = !ok;
-    if (ok) {
-      store.set((s) => (s.inputError ? { ...s, inputError: null } : s));
-    }
+    create.disabled = !normalizeInput(input.value).ok;
   };
-  input.addEventListener('input', refresh);
+  input.addEventListener('input', () => {
+    refresh();
+    // Typing again dismisses the previous message.
+    if (store.get().inputError)
+      store.set((s) => (s.inputError ? { ...s, inputError: null, failure: null } : s));
+  });
+  // The button is disabled until the text looks like a link, which also blocks Enter. Enter should
+  // still answer, with the inline message, so submit explicitly.
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && create.disabled) {
+      event.preventDefault();
+      on.submit(input.value);
+    }
+  });
 
   const form = h(
     'form',

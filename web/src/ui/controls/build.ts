@@ -744,7 +744,7 @@ function pickerControl(
               title: t.label,
               on: { click: t.pick },
             },
-            t.src ? h('img', { src: t.src, alt: '', draggable: false }) : icon('image', 18),
+            t.src ? h('img', { src: t.src, alt: '', draggable: 'false' }) : icon('image', 18),
           ),
         ),
       );

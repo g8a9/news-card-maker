@@ -103,3 +103,40 @@ export async function loadLogo(
 export function revokeLoaded(item: { objectUrl: string } | null | undefined): void {
   if (item?.objectUrl.startsWith('blob:')) URL.revokeObjectURL(item.objectUrl);
 }
+
+/** A picture the user supplied (file picker, drop or paste): decoded locally, never uploaded anywhere. */
+export async function loadImageFromBlob(
+  blob: Blob,
+  name = 'image',
+  decode: ImageLoadOptions['decode'] = decodeInBrowser,
+): Promise<LoadedImage> {
+  const objectUrl = URL.createObjectURL(blob);
+  try {
+    const { width, height } = await decode(blob, objectUrl);
+    return {
+      ref: { url: `upload:${name}`, width, height, mime: blob.type },
+      objectUrl,
+      width,
+      height,
+    };
+  } catch (e) {
+    URL.revokeObjectURL(objectUrl);
+    throw e;
+  }
+}
+
+export async function loadLogoFromBlob(
+  blob: Blob,
+  name = 'logo',
+  decode: ImageLoadOptions['decode'] = decodeInBrowser,
+): Promise<LoadedLogo> {
+  const image = await loadImageFromBlob(blob, name, decode);
+  const aspect = image.width / image.height;
+  return {
+    ref: { ...image.ref, kind: aspect >= 1.8 ? 'wordmark' : 'icon' },
+    objectUrl: image.objectUrl,
+    width: image.width,
+    height: image.height,
+    analysis: { aspect },
+  };
+}

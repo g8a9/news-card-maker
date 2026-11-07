@@ -59,6 +59,8 @@
   background: var(--rule);
 }
 .nc-media img {
+  -webkit-user-drag: none;
+  user-select: none;
   position: absolute;
   inset: 0;
   inline-size: 100%;

@@ -112,6 +112,7 @@ function media(article: ArticleModel, style: CardStyle, assets: RenderAssets): H
       src,
       alt: '',
       decoding: 'sync',
+      draggable: 'false', // a native image drag would swallow the pointer events of the focal-point drag
       style: {
         '--fx': `${style.imageFocus.x * 100}%`,
         '--fy': `${style.imageFocus.y * 100}%`,
