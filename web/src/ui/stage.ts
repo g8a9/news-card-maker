@@ -128,6 +128,10 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
     await decodeImages(rendered.root);
     if (mine !== token) return;
     const report: FitReport = fitCard(rendered.card);
+    if (!rendered.card.classList.contains('nc-fixed')) {
+      // Content-sized cards have fractional heights; whole pixels keep the export size equal to the readout.
+      rendered.card.style.height = `${Math.ceil(rendered.card.getBoundingClientRect().height - 0.01)}px`;
+    }
 
     current = rendered;
     scaler.replaceChildren(rendered.root);
@@ -137,7 +141,6 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
     sizer.style.setProperty('--ring', accent ? `${accent}66` : 'transparent');
     scaleToFit();
 
-    element.dataset.rendering = 'false';
     const size = measure();
     store.set((s) => {
       const sameFit = JSON.stringify(s.fit) === JSON.stringify(report);
@@ -146,6 +149,8 @@ export function createStage(store: Store<AppState>, deps: StageDeps): Stage {
       if (sameFit && sameSize) return s;
       return { ...s, fit: report, ui: { ...s.ui, measured: size } };
     });
+    store.flush(); // the readout and status line catch up before anyone is told the stage is idle
+    element.dataset.rendering = 'false';
   }
 
   const schedule = () => {

@@ -172,7 +172,7 @@ export function renderCard(input: RenderInput): RenderedCard {
   let width = size.width;
   if (style.frame.enabled) {
     const pad = Math.min(20, Math.max(0, style.frame.padding));
-    width = size.width + 2 * pad * unit;
+    width = size.width + 2 * Math.round(pad * unit);
     const backdrop = frameBackground(style, article, assets);
     root = h(
       'div',
@@ -182,6 +182,7 @@ export function renderCard(input: RenderInput): RenderedCard {
           '--w': `${size.width}px`,
           '--u': `${unit}px`,
           '--frame-pad': pad,
+          '--pad-px': `${Math.round(pad * unit)}px`,
           '--shadow': SHADOWS[style.frame.shadow],
           'background-color': backdrop.color,
           'background-image': backdrop.image,

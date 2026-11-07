@@ -2,7 +2,7 @@
 import { findOutletById, type Outlet } from '../core/registry.ts';
 import { type ArticleModel, effective, type Field } from '../core/types.ts';
 import { normalizeInput } from '../core/url.ts';
-import { createExportActions } from '../export/actions.ts';
+import { createExportActions, type ExportActions } from '../export/actions.ts';
 import {
   loadImage,
   loadImageFromBlob,
@@ -22,6 +22,7 @@ import { setOverride, withField } from '../state/fields.ts';
 import { setPath } from '../state/paths.ts';
 import { createStore, type Store } from '../state/store.ts';
 import type { PanelDeps } from './controls/build.ts';
+import { copyFallbackDialog, holdFallbackBlob } from './dialogs/copy-fallback.ts';
 import { helpDialog } from './dialogs/help.ts';
 import { createDialogHost } from './dialogs/host.ts';
 import { createEditor, type Editor } from './editor.ts';
@@ -99,7 +100,7 @@ function releaseUrls(article: ArticleModel | null): void {
 export function createApp(root: HTMLElement, deps: AppDeps): App {
   const store = createStore<AppState>(initialState());
   const resolve = deps.resolve ?? resolveArticle;
-  const exportActions = createExportActions(store);
+  let exportActions!: ExportActions;
   let controller: AbortController | null = null;
   let slowTimer: ReturnType<typeof setTimeout> | undefined;
 
@@ -327,6 +328,14 @@ export function createApp(root: HTMLElement, deps: AppDeps): App {
     dropImage: (file) => void panelDeps.uploadImage(file),
   });
   panel = createPanel(store, panelDeps);
+  exportActions = createExportActions({
+    store,
+    stage,
+    openFallback: (blob) => {
+      holdFallbackBlob(blob);
+      openDialog('copy-fallback');
+    },
+  });
 
   const landing = createLanding(store, { submit: (t) => void submit(t), openDialog });
   const editor = createEditor(store, {
@@ -347,7 +356,10 @@ export function createApp(root: HTMLElement, deps: AppDeps): App {
     },
   });
 
-  createDialogHost(store, { help: helpDialog });
+  createDialogHost(store, {
+    help: helpDialog,
+    'copy-fallback': () => copyFallbackDialog(() => void exportActions.download('png')),
+  });
   root.append(landing, editor.element, createToasts(store));
 
   store.subscribe(

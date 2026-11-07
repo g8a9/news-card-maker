@@ -152,3 +152,25 @@ export async function mockProxy(page: Page, options: MockOptions): Promise<Mock>
 
   return mock;
 }
+
+// ---- Shared flows -----------------------------------------------------------------------------------
+import { expect } from '@playwright/test';
+
+export async function openCard(
+  page: Page,
+  url: string,
+  pages: MockOptions['pages'],
+): Promise<void> {
+  await mockProxy(page, { pages });
+  await page.goto('/');
+  await page.getByLabel('News article link').fill(url);
+  await page.keyboard.press('Enter');
+  await expect(page.locator('.stage-scaler .nc-headline')).toBeVisible();
+  await expect(page.locator('#app')).toHaveAttribute('data-pipeline', 'done');
+  await expect(page.locator('.stage')).toHaveAttribute('data-rendering', 'false');
+}
+
+export const pngSize = (bytes: Buffer): [number, number] => [
+  bytes.readUInt32BE(16),
+  bytes.readUInt32BE(20),
+];

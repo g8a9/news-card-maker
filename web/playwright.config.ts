@@ -4,6 +4,9 @@ const PORT = 4173;
 
 export default defineConfig({
   testDir: './tests/e2e',
+  // Visual baselines are per platform and browser: fonts and text rendering differ between systems.
+  snapshotPathTemplate: '{testDir}/__snapshots__/{platform}/{projectName}/{arg}{ext}',
+  expect: { toMatchSnapshot: { maxDiffPixelRatio: 0.005 } },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,

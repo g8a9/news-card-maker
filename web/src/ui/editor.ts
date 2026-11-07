@@ -1,6 +1,7 @@
 // The editor view (PLAN.md §9.3): top bar, preview stage with its status and action bar, settings panel.
 import { type ArticleModel, effective } from '../core/types.ts';
 import type { ExportActions } from '../export/actions.ts';
+import { canEncode } from '../export/capture.ts';
 import { h } from '../render/h.ts';
 import type { AppState, DialogId } from '../state/app-state.ts';
 import type { Store } from '../state/store.ts';
@@ -24,6 +25,10 @@ export interface Editor {
   element: HTMLElement;
   focusUrl(): void;
 }
+
+const canShareImages = (): boolean =>
+  typeof navigator.canShare === 'function' &&
+  navigator.canShare({ files: [new File([], 'card.png', { type: 'image/png' })] });
 
 const CAN_COPY = 'ClipboardItem' in window && !!navigator.clipboard?.write;
 
@@ -200,7 +205,9 @@ export function createEditor(store: Store<AppState>, deps: EditorDeps): Editor {
   const downloadMenu = createMenu(downloadBtn, () => [
     { label: 'PNG', run: () => void deps.actions.download('png') },
     { label: 'JPEG', run: () => void deps.actions.download('jpeg') },
-    { label: 'WebP', run: () => void deps.actions.download('webp') },
+    ...(canEncode('image/webp')
+      ? [{ label: 'WebP', run: () => void deps.actions.download('webp') }]
+      : []),
   ]);
   const moreBtn = h(
     'button',
@@ -218,6 +225,7 @@ export function createEditor(store: Store<AppState>, deps: EditorDeps): Editor {
     () => [
       { label: 'Copy link to this card', run: deps.copyLink },
       { label: 'Open original', run: deps.openOriginal },
+      ...(canShareImages() ? [{ label: 'Share…', run: () => void deps.actions.share() }] : []),
     ],
     { align: 'end' },
   );
@@ -265,10 +273,10 @@ export function createEditor(store: Store<AppState>, deps: EditorDeps): Editor {
       downloadBtn.disabled = !ready;
       moreBtn.disabled = !ready;
       const m = s.ui.measured;
-      readout.textContent =
-        ready && m
-          ? `${Math.round(m.width * s.style.export.scale)} × ${Math.round(m.height * s.style.export.scale)} px`
-          : '';
+      const guard = ready && m ? deps.actions.plan(s) : null;
+      readout.textContent = guard
+        ? `${guard.width} × ${guard.height} px${guard.clamped ? ' (reduced)' : ''}`
+        : '';
     },
     { equals: () => false, immediate: true },
   );

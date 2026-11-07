@@ -140,7 +140,20 @@ async function run(): Promise<CardReport[]> {
       (params.get('theme') ?? 'light') as ThemeId,
       (params.get('size') ?? 'auto') as SizePreset,
     );
-    if (params.get('frame') === '1') style.frame.enabled = true;
+    if (style.size.preset === 'custom') {
+      style.size = {
+        preset: 'custom',
+        width: Number(params.get('w') ?? 1200),
+        height: Number(params.get('h') ?? 675),
+      };
+    }
+    if (params.get('frame') === '1') {
+      style.frame.enabled = true;
+      const bg = params.get('frameBg');
+      if (bg === 'blur') style.frame.background = { kind: 'blur' };
+      else if (bg === 'gradient') style.frame.background = { kind: 'gradient', value: 'sunset' };
+      else if (bg === 'transparent') style.frame.background = { kind: 'transparent' };
+    }
     if (params.get('kicker') === '0') style.show.kicker = false;
     const host = document.createElement('div');
     host.id = 'single';
@@ -149,6 +162,29 @@ async function run(): Promise<CardReport[]> {
       fixture: params.get('fixture') as string,
     });
     summary.textContent = `${report.id}: ${report.width}×${report.height}`;
+    if (params.get('export') === '1') {
+      const { renderToBlob } = await import('../src/export/capture.ts');
+      const target = () =>
+        (document.querySelector('.nc-frame') ?? document.querySelector('.nc-card')) as HTMLElement;
+      const toDataUrl = (blob: Blob) =>
+        new Promise<string>((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result as string);
+          reader.onerror = () => reject(reader.error);
+          reader.readAsDataURL(blob);
+        });
+      (window as unknown as { __export: unknown }).__export = {
+        png: async (scale: number) =>
+          toDataUrl(await renderToBlob(target(), { scale, type: 'image/png' })),
+      };
+    }
+    if (params.get('spike') === '1') {
+      document.body.style.background = '#808080'; // the grey the spike composites transparent pixels on
+      document.querySelector('header.bar')?.remove(); // a sticky header would overlap the reference screenshot
+      main.style.padding = '0';
+      window.scrollTo(0, 0);
+      (await import('./spike.ts')).installSpike();
+    }
     return [report];
   }
 

@@ -295,8 +295,8 @@
 .nc-frame {
   --frame-pad: 6;
   display: block;
-  inline-size: calc(var(--w) + var(--u) * var(--frame-pad) * 2);
-  padding: calc(var(--u) * var(--frame-pad));
+  inline-size: calc(var(--w) + var(--pad-px) * 2);
+  padding: var(--pad-px);
   background: var(--frame-bg, transparent);
   background-size: cover;
   background-position: center;

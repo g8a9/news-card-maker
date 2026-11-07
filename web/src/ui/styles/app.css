@@ -935,3 +935,18 @@ kbd {
     overflow: visible;
   }
 }
+
+/* ---- Copy fallback dialog ------------------------------------------------------------------ */
+.fallback-img {
+  display: block;
+  max-inline-size: 100%;
+  max-block-size: 50vh;
+  margin-inline: auto;
+  border-radius: var(--radius);
+  background: repeating-conic-gradient(#17171a 0% 25%, #101012 0% 50%) 0 0 / 16px 16px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
