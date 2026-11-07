@@ -1,0 +1,22 @@
+# dependencies and build output
+node_modules
+dist
+.wrangler
+.vite
+
+# test output
+test-results
+playwright-report
+coverage
+
+# local-only fixtures and generated code
+web/tests/fixtures/live
+web/src/bookmarklet/generated.ts
+
+# local config and OS cruft
+.env
+.env.local
+.dev.vars
+*.local
+.DS_Store
+*.log

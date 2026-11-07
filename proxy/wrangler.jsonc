@@ -1,0 +1,26 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "news-card-proxy",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-07",
+  "vars": {
+    // Comma-separated browser origins allowed to call /api/*. The deploy workflow overrides this
+    // with https://<owner>.github.io; the localhost entries are for `npm run dev` and e2e previews.
+    "ALLOWED_ORIGINS": "http://localhost:5173,http://localhost:4173",
+    // Honest user agent, sent on every upstream request. Replace OWNER (or let deploy.yml do it).
+    "USER_AGENT": "Mozilla/5.0 (compatible; NewsCardMaker/1.0; +https://github.com/OWNER/news-card-maker)",
+    "MAX_TEXT_BYTES": "3000000",
+    "MAX_IMAGE_BYTES": "15000000"
+  },
+  // Workers Rate Limiting binding. Keyed by CF-Connecting-IP in code. Period must be 10 or 60.
+  "ratelimits": [
+    { "name": "RL_TEXT", "namespace_id": "1001", "simple": { "limit": 30, "period": 60 } },
+    { "name": "RL_IMAGE", "namespace_id": "1002", "simple": { "limit": 240, "period": 60 } }
+  ],
+  // Keep logs free of the pages people look up: no invocation logs, query strings redacted.
+  "observability": {
+    "enabled": true,
+    "redact_query_string": true,
+    "logs": { "enabled": true, "invocation_logs": false }
+  }
+}
