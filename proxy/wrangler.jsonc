@@ -3,6 +3,9 @@
   "name": "news-card-proxy",
   "main": "src/index.ts",
   "compatibility_date": "2026-11-07",
+  // The Worker's custom domain. `wrangler deploy` creates the DNS record and certificate; a custom
+  // domain is also what makes the edge cache guaranteed rather than best effort (PLAN.md §4.6).
+  "routes": [{ "pattern": "api.gattanasio.cc", "custom_domain": true }],
   "vars": {
     // Comma-separated browser origins allowed to call /api/*. The deploy workflow overrides this
     // with https://<owner>.github.io; the localhost entries are for `npm run dev` and e2e previews.
